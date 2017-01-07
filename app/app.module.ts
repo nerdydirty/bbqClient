@@ -1,3 +1,5 @@
+//Dieses app.module ist dazu da, damit meine app alles bekommt was es braucht um zu funktionieren
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
