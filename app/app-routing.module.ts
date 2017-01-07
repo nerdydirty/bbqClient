@@ -9,7 +9,7 @@ import { CategoriesComponent} from './categories/categories.component';
 
 //Routenplaner - Bsp: Wenn Pfad /users aufgerufen wird, dann includiere die UsersComponent (unter router-outlet im DOM)
 const routes: Routes = [
-  {path: '', redirectTo: '/users', pathMatch:'full'},
+  {path: '', redirectTo: '/categories', pathMatch:'full'},
   {path: 'users', component: UsersComponent},
   {path: 'questions', component: QuestionsComponent},
   {path: 'categories', component: CategoriesComponent}
