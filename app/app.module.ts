@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
 
 import { CategoriesComponent } from './categories/categories.component';
@@ -13,7 +14,7 @@ import { QuestionService } from './questions/shared/question.service';
 import { UserService } from './users/shared/user.service';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule ],
+  imports:      [ BrowserModule, HttpModule, AppRoutingModule ],
   declarations: [
     AppComponent,
     CategoriesComponent,
