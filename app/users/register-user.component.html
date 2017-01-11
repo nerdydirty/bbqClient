@@ -1,0 +1,25 @@
+<h2>Registrierung</h2>
+<form name="form" (ngSubmit) = "f.form.valid && register()" #f="ngForm" novalidate>
+  <div class="form-group-lg" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+    <label for="username">Name: </label>
+    <input type="text" class="form-control" name="username" [(ngModel)]="model.name" #username="ngModel" required>
+    <!-- Error message: Help Block for input field -->
+    <div *ngIf="f.submitted && !username.valid" class="help-block">Username ist ein Pflichtfeld</div>
+  </div>
+  <div class="form-group-lg" [ngClass]="{ 'has-error': f.submitted && !pw.valid }">
+    <label for="pw">Passwort: </label>
+    <input type="password" class="form-control" name="pw" [(ngModel)]="model.password" #pw="ngModel" required>
+    <div *ngIf="f.submitted && !pw.valid" class="help-block">Passwort ist ein Pflichtfeld</div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary" type="submit">Register</button>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <a [routerLink]="['/categories']" class="btn btn-link">Cancel</a>
+  </div>
+</form>
+
+
+
+
+
+

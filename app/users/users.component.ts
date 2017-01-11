@@ -1,5 +1,6 @@
 /**
  * Created by beateullmann on 07.01.17.
+ * Beschreibt die Logik der Componente
  */
 import { Component, OnInit }  from '@angular/core';
 import {User} from "./shared/user.model";
