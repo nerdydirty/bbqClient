@@ -13,17 +13,11 @@ We are unlikely to accept suggestions about how to grow this QuickStart into som
 Please keep that in mind before posting issues and PRs.
 
 ## Prerequisites
-
-Node.js and npm are essential to Angular development. 
-    
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
- 
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
-
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
+we need jssha lib for password hashing
+```shell
+npm install jssha
+npm install --save @types/jssha
+```
 
 ## Create a new project based on the QuickStart
 
