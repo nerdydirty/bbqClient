@@ -18,18 +18,26 @@ import { QuestionService } from './questions/shared/question.service';
 import { UserService } from './users/shared/user.service';
 import { RegisterUserComponent } from "./users/register-user.component";
 import { AlertService } from "./alerts/shared/alert.service";
+import { LoginUserComponent } from "./users/login-user.component";
+import {AuthenticationService} from "./users/shared/authentication.service";
+import {AuthGuard} from "./guards/auth.guard";
+import {WelcomeComponent} from "./welcome/welcome.component";
+import {NavigationComponent} from "./navigation/navigation.component";
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, AppRoutingModule, FormsModule ],
   declarations: [
     AppComponent,
+    NavigationComponent,
     CategoriesComponent,
     QuestionsComponent,
     UsersComponent,
     RegisterUserComponent,
-    AlertComponent
+    AlertComponent,
+    LoginUserComponent,
+    WelcomeComponent
   ],
-  providers: [ CategoryService, QuestionService, UserService, AlertService ],
+  providers: [ CategoryService, QuestionService, UserService, AlertService, AuthenticationService, AuthGuard ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
