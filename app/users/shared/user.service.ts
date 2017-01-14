@@ -1,11 +1,11 @@
 /**
  * Created by beateullmann on 07.01.17.
  *
- * Dieser service ruft die Daten vom Server ab.
+ * Dieser service ruft die Daten vom Server ab und macht die Requests
  */
 
 import {Injectable} from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import {Headers, Http, Response, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {User} from './user.model';
@@ -43,6 +43,15 @@ export class UserService {
     var sha256 = new jsSHA('SHA-256', 'TEXT');
     sha256.update(pw);
     return window.btoa(sha256.getHash("HEX"));
+  }
+
+  // create authorization header with jwt token
+  private jwt(){
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.token) {
+      let headers = new Headers({ 'Authentization': 'Bearer' + currentUser.token});
+      return new RequestOptions ({headers: headers});
+    }
 
   }
 }
