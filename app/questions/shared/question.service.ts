@@ -2,10 +2,11 @@
  * Created by beateullmann on 07.01.17.
  */
 import { Injectable} from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import {Headers, Http, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Question } from './question.model';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class QuestionService{
@@ -18,6 +19,12 @@ export class QuestionService{
   getQuestions(): Promise<Question[]> {
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
   }
+
+  createQuestion(question: Question): Observable<Question[]>{
+    return this.http.post(this.questionsUrl, question, {headers:this.headers})
+      .map((r: Response) => r.json() as Question).catch(this.handleError);
+  }
+
 
   handleError(error:any): Promise<any> {
     console.log("Fehler ist aufgetreten", error);

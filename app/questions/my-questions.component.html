@@ -1,0 +1,112 @@
+<bbq-nav></bbq-nav>
+
+<!--            -  Formular   -       -->
+
+<form name="from" #f="ngForm" class="createQuestion" >
+  <h2 class="modal-title">Meine Quiz-Fragenverwaltung</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <div class="form-group">
+
+        <!--            -  Kategorie-Zuordnung   -       -->
+        <label for="cat">Kategorie + Frage einfügen</label>
+        <select id="cat" name="category" class="form-control" [(ngModel)]="model.category" #category="ngModel">
+          <option *ngFor="let category of categories" [ngValue]="category">
+            {{category.name}}
+          </option>
+        </select>
+        <input name="questiontext" [(ngModel)]="model.text" #questiontext="ngModel" type="text" class="form-control" placeholder="Schreibe deine Quiz-Frage...">
+      </div>
+
+      <!--            -  Antwort-Optionen einfügen   -       -->
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" name="correct-answer" [(ngModel)]="answers[0].isTrue" value="true">
+                        </span>
+            <input name="a1" type="text" class="form-control" [(ngModel)]="answers[0].text" #a1="ngModel">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" name="correct-answer">
+                        </span>
+            <input name="a2" type="text" class="form-control" [(ngModel)]="answers[1].text" #a2="ngModel">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" name="correct-answer" placeholder="2. Antwort-Option">
+                        </span>
+            <input name="a3" type="text" class="form-control" [(ngModel)]="answers[2].text" #a3="ngModel">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" name="correct-answer" placeholder="3. Antwort-Option">
+                        </span>
+            <input name="a4" type="text" class="form-control" [(ngModel)]="answers[3].text" #a4="ngModel">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+
+        <!-- Marco probiert was aus -->
+        <hr>
+        <div class="col-lg-6">
+          <div class="input-group" *ngFor="let answer of answers; let i = index">
+                        <span class="input-group-addon">
+                            <input type="radio" name="correct-answer">
+                        </span>
+            <input name="a" type="text" class="form-control" [(ngModel)]="answer.text">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+
+        <!-- Marco Ende -->
+
+
+
+      </div><!-- /.row -->
+      <p></p>
+
+      <!--            -  Bild einfügen   -       -->
+
+      <label for="qimg">Bild einfügen</label>
+      <input name="qimg" [(ngModel)]="model.img" #qimg="ngModel" class="form-control" id="qimg" type="text" placeholder="URL zum Bild eingeben">
+      <p></p>
+
+      <!--            -  Beschreibung einfügen   -       -->
+
+      <h4>Beschreibung hinzufügen:</h4>
+      <blockquote>
+        <textarea class="form-control" name="qexpl" [(ngModel)]="model.explanation" #qexpl="ngModel"
+          placeholder="Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
+                  rows="4"></textarea>
+      </blockquote>
+      <p></p>
+
+      <!--                 -  Punkte   -              -->
+
+      <h4>Punkte:</h4>
+      <label for="inlineRadio1" class="radio-inline">
+        <input type="radio" name="points" id="inlineRadio1" [(ngModel)]="model.points" value="1"> 1
+      </label>
+      <label for="inlineRadio2" class="radio-inline">
+        <input type="radio" name="points" id="inlineRadio2" [(ngModel)]="model.points" value="2"> 2
+      </label>
+      <label for="inlineRadio3" class="radio-inline">
+        <input type="radio" name="points" id="inlineRadio3" [(ngModel)]="model.points" value="3"> 3
+      </label>
+      <button type="submit" class="btn btn-default">Ab damit in den Fragenkatalog</button>
+    </div><!-- /.panel-heading -->
+  </div><!-- /.panel-default -->
+</form>
+
+<pre>{{this.model | json}}</pre>
+<pre>{{this.answers | json}}</pre>

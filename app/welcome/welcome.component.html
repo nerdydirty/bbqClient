@@ -1,6 +1,11 @@
 <bbq-nav></bbq-nav>
-<div class="col-md-6 col-md-offset-3">
+<div class="well center-block">
   <h1>Hi {{currentUser.name}}!</h1>
   <p>Du bist angemeldet</p>
-  <p><a [routerLink]="['/login']">Logout</a></p>
+  <div class="well center-block">
+      <button routerLink="/questions" class="btn btn-primary btn-lg btn-block" type="button">CREATE
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+    <button class="btn btn-primary btn-lg btn-block" type="button">PLAY <span class="glyphicon glyphicon-play"></span></button>
+  </div>
 </div>

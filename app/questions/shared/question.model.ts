@@ -1,3 +1,6 @@
+import {User} from "../../users/shared/user.model";
+import {Answer} from "./answer.model";
+import {Category} from "../../categories/shared/category.model";
 /**
  * Created by beateullmann on 07.01.17.
  *
@@ -12,6 +15,8 @@ export class Question{
   points: number;
   explanation: string;
   img: string;
-  creator: any;
+  creator: User;
+  category: Category;
+  answers: Answer[];
 
 }
