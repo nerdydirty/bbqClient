@@ -15,13 +15,14 @@ import {MyQuestionsComponent} from "./questions/my-questions.component";
 
 //Routenplaner - Bsp: Wenn Pfad /users aufgerufen wird, dann includiere die UsersComponent (unter router-outlet im DOM)
 const routes: Routes = [
-  {path: '', component: WelcomeComponent, canActivate:[AuthGuard] },
-  {path: 'users', component: UsersComponent},
-  {path: 'questions', component: QuestionsComponent},
-  {path: 'myquestions', component: MyQuestionsComponent},
-  {path: 'categories', component: CategoriesComponent},
+  {path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
+  {path: 'questions', component: QuestionsComponent, canActivate:[AuthGuard]},
+  {path: 'myquestions', component: MyQuestionsComponent, canActivate:[AuthGuard]},
+  {path: 'categories', component: CategoriesComponent, canActivate:[AuthGuard]},
   {path: 'register', component: RegisterUserComponent},
-  {path: 'login', component: LoginUserComponent}
+  {path: 'login', component: LoginUserComponent},
+  {path: '', component: WelcomeComponent, canActivate:[AuthGuard] },
+  {path: '**', component: WelcomeComponent}
 ]
 
 @NgModule({

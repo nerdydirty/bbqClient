@@ -20,7 +20,7 @@ export class QuestionService{
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
   }
 
-  createQuestion(question: Question): Observable<Question[]>{
+  createQuestion(question: Question): Observable<Question>{
     return this.http.post(this.questionsUrl, question, {headers:this.headers})
       .map((r: Response) => r.json() as Question).catch(this.handleError);
   }

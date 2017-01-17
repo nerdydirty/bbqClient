@@ -7,6 +7,8 @@ import {QuestionService} from "./shared/question.service";
 import {Category} from "../categories/shared/category.model";
 import {CategoryService} from "../categories/shared/category.service";
 import {Answer} from "./shared/answer.model";
+import {Router} from "@angular/router";
+import {AlertService} from "../alerts/shared/alert.service";
 
 @Component({
     moduleId: module.id,
@@ -21,7 +23,9 @@ export class MyQuestionsComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
-    private categoryService: CategoryService) {}
+    private categoryService: CategoryService,
+    private alertService: AlertService,
+    private router: Router){}
 
   ngOnInit() {
       this.model.creator = JSON.parse(localStorage.getItem('currentUser'));
@@ -29,7 +33,17 @@ export class MyQuestionsComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log("Marco ist blöd");
 
+    this.questionService.createQuestion(this.model)
+      .subscribe(
+      data => {
+        this.alertService.success('Frage ist angelegt', true);
+        //this.router.navigate(['/categories']);
+      },
+      error => {
+        this.alertService.error('Frage konnte leider nicht angelegt werden');
+      });
   }
 
 }

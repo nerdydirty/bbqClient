@@ -2,63 +2,33 @@
 
 <!--            -  Formular   -       -->
 
-<form name="from" #f="ngForm" class="createQuestion" >
+<form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm"  class="createQuestion" novalidate>
+
   <h2 class="modal-title">Meine Quiz-Fragenverwaltung</h2>
   <div class="panel panel-default">
     <div class="panel-heading">
-
       <div class="form-group">
 
+
         <!--            -  Kategorie-Zuordnung   -       -->
-        <label for="cat">Kategorie + Frage einfügen</label>
+
+        <h4>Kategorie wählen:</h4>
         <select id="cat" name="category" class="form-control" [(ngModel)]="model.category" #category="ngModel">
           <option *ngFor="let category of categories" [ngValue]="category">
             {{category.name}}
           </option>
         </select>
+
+        <!--            -  Frage anlegen   -       -->
+
+        <h4>Frage eintragen:</h4>
         <input name="questiontext" [(ngModel)]="model.text" #questiontext="ngModel" type="text" class="form-control" placeholder="Schreibe deine Quiz-Frage...">
       </div>
 
       <!--            -  Antwort-Optionen einfügen   -       -->
 
+      <h4>Antwortoptionen eintragen:</h4>
       <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio" name="correct-answer" [(ngModel)]="answers[0].isTrue" value="true">
-                        </span>
-            <input name="a1" type="text" class="form-control" [(ngModel)]="answers[0].text" #a1="ngModel">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-          <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio" name="correct-answer">
-                        </span>
-            <input name="a2" type="text" class="form-control" [(ngModel)]="answers[1].text" #a2="ngModel">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio" name="correct-answer" placeholder="2. Antwort-Option">
-                        </span>
-            <input name="a3" type="text" class="form-control" [(ngModel)]="answers[2].text" #a3="ngModel">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
-          <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio" name="correct-answer" placeholder="3. Antwort-Option">
-                        </span>
-            <input name="a4" type="text" class="form-control" [(ngModel)]="answers[3].text" #a4="ngModel">
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-
-        <!-- Marco probiert was aus -->
-        <hr>
         <div class="col-lg-6">
           <div class="input-group" *ngFor="let answer of answers; let i = index">
                         <span class="input-group-addon">
@@ -67,19 +37,14 @@
             <input name="a" type="text" class="form-control" [(ngModel)]="answer.text">
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
-
-        <!-- Marco Ende -->
-
-
-
       </div><!-- /.row -->
       <p></p>
 
       <!--            -  Bild einfügen   -       -->
 
-      <label for="qimg">Bild einfügen</label>
+      <h4 for="qimg">Bild einfügen</h4>
       <input name="qimg" [(ngModel)]="model.img" #qimg="ngModel" class="form-control" id="qimg" type="text" placeholder="URL zum Bild eingeben">
-      <p></p>
+
 
       <!--            -  Beschreibung einfügen   -       -->
 
