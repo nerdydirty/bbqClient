@@ -35,7 +35,7 @@ export class MyQuestionsComponent implements OnInit {
 
   onSubmit(){
 
-    this.questionService.createQuestion(this.model)
+    this.questionService.createQuestion(this.model, this.answers)
       .subscribe(
       data => {
         this.alertService.success('Frage ist angelegt', true);
@@ -44,14 +44,6 @@ export class MyQuestionsComponent implements OnInit {
       error => {
         this.alertService.error('Frage konnte leider nicht angelegt werden');
       });
-    this.questionService.createAnswer(this.model).subscribe(
-        data => {
-          this.alertService.success('Antwort ist angelegt', true);
-          //this.router.navigate(['/categories']);
-        },
-        error => {
-          this.alertService.error('Antwort konnte leider nicht angelegt werden');
-        });
   }
 
   onSelect(answer: Answer) {

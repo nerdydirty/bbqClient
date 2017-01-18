@@ -23,9 +23,9 @@ export class ComponentNameComponent implements OnInit {
   }
 
 
-  createQuestions(): void {
+  /*createQuestions(): void {
 
-    this.questionService.createQuestion(this.model)
+    this.questionService.createQuestion(this.model, this.answers)
       .subscribe(
         data => {
           this.alertService.success('successful', true);
@@ -35,7 +35,7 @@ export class ComponentNameComponent implements OnInit {
           this.alertService.error('failed');
         }
       );
-  }
+  }*/
 
 
   ngOnInit() {
