@@ -29,11 +29,11 @@ export class MyQuestionsComponent implements OnInit {
 
   ngOnInit() {
       this.model.creator = JSON.parse(localStorage.getItem('currentUser'));
-      this.categoryService.getCategories().then(categories => this.categories = categories);
+      this.categoryService.getCategories().then(categories => {this.categories = categories;
+      this.model.category = this.categories[0]});
   }
 
   onSubmit(){
-    console.log("Marco ist blöd");
 
     this.questionService.createQuestion(this.model)
       .subscribe(
@@ -44,6 +44,18 @@ export class MyQuestionsComponent implements OnInit {
       error => {
         this.alertService.error('Frage konnte leider nicht angelegt werden');
       });
+    this.questionService.createAnswer(this.model).subscribe(
+        data => {
+          this.alertService.success('Antwort ist angelegt', true);
+          //this.router.navigate(['/categories']);
+        },
+        error => {
+          this.alertService.error('Antwort konnte leider nicht angelegt werden');
+        });
+  }
+
+  onSelect(answer: Answer) {
+    this.model.answers.push(answer);
   }
 
 }
