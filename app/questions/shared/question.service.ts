@@ -4,6 +4,7 @@
 import { Injectable} from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/mergeMap';
 
 import { Question } from './question.model';
 import {Observable} from "rxjs";
@@ -14,6 +15,8 @@ export class QuestionService{
 
   private questionsUrl = 'http://localhost:8081/questions';
   private headers = new Headers({'Content-Type': 'application/json'});
+  private q: Question;
+  private answers: Answer[];
 
   constructor(private http: Http){}
 
@@ -21,19 +24,22 @@ export class QuestionService{
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
   }
 
-  /*createQuestion(question: Question): Observable<Question>{
-    return this.http.post(this.questionsUrl, question, {headers:this.headers})
+  //alte createQuestion Implementierung
+  private postQuestion(q: Question): Observable<Question>{
+    return this.http.post(this.questionsUrl, q, {headers:this.headers})
       .map((r: Response) => r.json() as Question).catch(this.handleError);
-  }*/
-
-  createAnswer(answer: Answer): Observable<Answer[]>{
-    return this.http.post(this.questionsUrl, answer, {headers:this.headers})
-      .map((r: Response) => r.json() as Answer).catch(this.handleError);
   }
 
+
   createQuestion(question: Question, answers: Answer[]): Observable<Question>{
-    return this.http.post(this.questionsUrl, answers, {headers:this.headers})
-      .map((r: Response) => r.json() as Answer).catch(this.handleError);
+
+    return this.http.post(this.questionsUrl, question, {headers:this.headers})
+      .map((res:Response) => res.json())
+      .flatMap((question) => {
+        return this.http.post(this.questionsUrl+"/"+question.id+"/answers", answers,{headers:this.headers})
+      })
+      .map((res:Response) => res.json());
+
   }
 
 
