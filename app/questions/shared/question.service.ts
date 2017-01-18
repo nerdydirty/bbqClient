@@ -21,13 +21,18 @@ export class QuestionService{
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
   }
 
-  createQuestion(question: Question): Observable<Question>{
+  /*createQuestion(question: Question): Observable<Question>{
     return this.http.post(this.questionsUrl, question, {headers:this.headers})
       .map((r: Response) => r.json() as Question).catch(this.handleError);
-  }
+  }*/
 
   createAnswer(answer: Answer): Observable<Answer[]>{
     return this.http.post(this.questionsUrl, answer, {headers:this.headers})
+      .map((r: Response) => r.json() as Answer).catch(this.handleError);
+  }
+
+  createQuestion(question: Question, answers: Answer[]): Observable<Question>{
+    return this.http.post(this.questionsUrl, answers, {headers:this.headers})
       .map((r: Response) => r.json() as Answer).catch(this.handleError);
   }
 
