@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { Question } from './question.model';
 import {Observable} from "rxjs";
+import {Answer} from "./answer.model";
 
 @Injectable()
 export class QuestionService{
@@ -23,6 +24,11 @@ export class QuestionService{
   createQuestion(question: Question): Observable<Question>{
     return this.http.post(this.questionsUrl, question, {headers:this.headers})
       .map((r: Response) => r.json() as Question).catch(this.handleError);
+  }
+
+  createAnswer(answer: Answer): Observable<Answer[]>{
+    return this.http.post(this.questionsUrl, answer, {headers:this.headers})
+      .map((r: Response) => r.json() as Answer).catch(this.handleError);
   }
 
 
