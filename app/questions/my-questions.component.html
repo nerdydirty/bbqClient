@@ -22,7 +22,10 @@
         <!--            -  Frage anlegen   -       -->
 
         <h4>Frage eintragen:</h4>
-        <input name="questiontext" [(ngModel)]="model.text" #questiontext="ngModel" type="text" class="form-control" placeholder="Schreibe deine Quiz-Frage...">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !questiontext.valid }">
+          <input name="questiontext" [(ngModel)]="model.text" #questiontext="ngModel" type="text" class="form-control"
+               placeholder="Schreibe deine Quiz-Frage..." required>
+        </div>
       </div>
 
       <!--            -  Antwort-Optionen einfügen   -       -->
@@ -31,9 +34,9 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="input-group" *ngFor="let answer of answers; let i = index">
-                        <span class="input-group-addon">
-                            <input type="radio" name="correct-answer" (click)="setAsRightAnswer(i)">
-                        </span>
+            <span class="input-group-addon">
+                <input type="radio" name="correct-answer" (click)="setAsRightAnswer(i)">
+            </span>
             <input name="a" type="text" class="form-control" [(ngModel)]="answer.text">
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
@@ -43,32 +46,44 @@
       <!--            -  Bild einfügen   -       -->
 
       <h4 for="qimg">Bild einfügen</h4>
-      <input name="qimg" [(ngModel)]="model.img" #qimg="ngModel" class="form-control" id="qimg" type="text" placeholder="URL zum Bild eingeben">
+      <div class = "form-group-sm" [ngClass]="{ 'has-error': f.submitted && !qimg.valid }">
+        <input name="qimg" [(ngModel)]="model.img" #qimg="ngModel" class="form-control" id="qimg" type="text"
+             placeholder="URL zum Bild eingeben" required>
+      </div>
 
 
       <!--            -  Beschreibung einfügen   -       -->
 
       <h4>Beschreibung hinzufügen:</h4>
-      <blockquote>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !qexpl.valid }">
         <textarea class="form-control" name="qexpl" [(ngModel)]="model.explanation" #qexpl="ngModel"
           placeholder="Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-                  rows="4"></textarea>
-      </blockquote>
+                  rows="4" required></textarea>
+      </div>
       <p></p>
 
       <!--                 -  Punkte   -              -->
 
       <h4>Punkte:</h4>
-      <label for="inlineRadio1" class="radio-inline">
-        <input type="radio" name="points" id="inlineRadio1" [(ngModel)]="model.points" value="1"> 1
-      </label>
-      <label for="inlineRadio2" class="radio-inline">
-        <input type="radio" name="points" id="inlineRadio2" [(ngModel)]="model.points" value="2"> 2
-      </label>
-      <label for="inlineRadio3" class="radio-inline">
-        <input type="radio" name="points" id="inlineRadio3" [(ngModel)]="model.points" value="3"> 3
-      </label>
-      <button type="submit" class="btn btn-default">Ab damit in den Fragenkatalog</button>
+      <div class="form-group">
+        <div class="radio-inline">
+          <label name="p" for="inlineRadio1">
+            <input type="radio" name="p" id="inlineRadio1" [(ngModel)]="model.points" value="1"> 1
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label for="inlineRadio2">
+            <input type="radio" name="p" id="inlineRadio2" [(ngModel)]="model.points" value="2"> 2
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label for="inlineRadio3">
+            <input type="radio" name="p" id="inlineRadio3" [(ngModel)]="model.points" value="3"> 3
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span> <span class="glyphicon glyphicon-piggy-bank"></span>
+        Ab damit in den Fragenkatalog</button>
     </div><!-- /.panel-heading -->
   </div><!-- /.panel-default -->
 </form>

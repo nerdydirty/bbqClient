@@ -35,7 +35,7 @@ export class MyQuestionsComponent implements OnInit {
   }
 
   onSubmit(){
-
+    this.alertService.clearAlerts();
     this.questionService.createQuestion(this.model, this.answers)
       .subscribe(
       data => {
