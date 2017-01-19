@@ -9,6 +9,7 @@ import {CategoryService} from "../categories/shared/category.service";
 import {Answer} from "./shared/answer.model";
 import {Router} from "@angular/router";
 import {AlertService} from "../alerts/shared/alert.service";
+import set = Reflect.set;
 
 @Component({
     moduleId: module.id,
@@ -46,8 +47,14 @@ export class MyQuestionsComponent implements OnInit {
       });
   }
 
-  onSelect(answer: Answer) {
-    this.model.answers.push(answer);
+  setAsRightAnswer(answerNo: number){
+    for (let i = 0; i < this.answers.length; i++){
+      if (answerNo == i) {
+        this.answers[i].isTrue = true;
+      } else {
+        this.answers[i].isTrue = false;
+      }
+    }
   }
 
 }

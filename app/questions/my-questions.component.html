@@ -32,7 +32,7 @@
         <div class="col-lg-6">
           <div class="input-group" *ngFor="let answer of answers; let i = index">
                         <span class="input-group-addon">
-                            <input type="radio" name="correct-answer">
+                            <input type="radio" name="correct-answer" (click)="setAsRightAnswer(i)">
                         </span>
             <input name="a" type="text" class="form-control" [(ngModel)]="answer.text">
           </div><!-- /input-group -->
@@ -73,5 +73,10 @@
   </div><!-- /.panel-default -->
 </form>
 
+
+<!-- Ausgaben vom Model um Binding zu prüfen --
+
 <pre>{{this.model | json}}</pre>
 <pre>{{this.answers | json}}</pre>
+
+-->
