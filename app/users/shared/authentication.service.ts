@@ -22,10 +22,13 @@ private headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.authUrl, JSON.stringify({ name: username, password: password}), {headers: this.headers})
       .map((response: Response)=> {
       //wenn ein jwt token im response ist, dann login erfolgreich
+        console.log("1");
         let user = response.json();
+        console.log("2");
         if (user && user.jsonWebToken){
           //speichern von user details und jwt token im local storage, damit man eingelogged bleibt bei page refresh
           localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log("3");
         }
       });
   }

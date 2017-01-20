@@ -8,6 +8,6 @@ export class Category{
   id: number;
   name: string;
   img: string;
-  questions: Question[];
+  countQuestions: number;
 
 }
