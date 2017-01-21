@@ -24,6 +24,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import {MyQuestionsComponent} from "./questions/my-questions.component";
+import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, AppRoutingModule, FormsModule ],
@@ -37,7 +38,8 @@ import {MyQuestionsComponent} from "./questions/my-questions.component";
     AlertComponent,
     LoginUserComponent,
     WelcomeComponent,
-    MyQuestionsComponent
+    MyQuestionsComponent,
+    PlayQuizComponent
   ],
   providers: [ CategoryService, QuestionService, UserService, AlertService, AuthenticationService, AuthGuard ],
   bootstrap:    [ AppComponent ]
