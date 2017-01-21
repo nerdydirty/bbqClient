@@ -11,6 +11,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import {LoginUserComponent} from "./users/login-user.component";
 import {WelcomeComponent} from "./welcome/welcome.component";
 import {MyQuestionsComponent} from "./questions/my-questions.component";
+import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
 
 
 //Routenplaner - Bsp: Wenn Pfad /users aufgerufen wird, dann includiere die UsersComponent (unter router-outlet im DOM)
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'questions', component: QuestionsComponent, canActivate:[AuthGuard]},
   {path: 'myquestions', component: MyQuestionsComponent, canActivate:[AuthGuard]},
   {path: 'categories', component: CategoriesComponent, canActivate:[AuthGuard]},
+  {path: 'categories/:id/play', component: PlayQuizComponent, canActivate:[AuthGuard]},
   {path: 'register', component: RegisterUserComponent},
   {path: 'login', component: LoginUserComponent},
   {path: '', component: WelcomeComponent, canActivate:[AuthGuard] },
