@@ -1,4 +1,25 @@
 <bbq-nav></bbq-nav>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let question of questions">{{question.text}}</li>
-</ul>
+<h2>Es gibt insgesamt aktuell {{questions?.length}} Fragen im BBQ</h2>
+<div class="row">
+  <div class="col-lg-2">
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let question of questions">{{question.id}}</div>
+  </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let question of questions">{{question.text}}</div>
+    </div>
+  </div>
+  <div class="col-lg-2">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let question of questions">{{question.category.name}}</div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let question of questions">{{question.creator.name}}</div>
+    </div>
+  </div>
+</div>
+
