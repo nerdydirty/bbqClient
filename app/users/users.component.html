@@ -1,9 +1,20 @@
 <bbq-nav></bbq-nav>
-<h2>User Liste</h2>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let user of users">
-    {{user.id}}
-    {{user.name}}
-    {{user.totalPoints}}
-  </li>
-</ul>
+<h2>Highscore <span class="glyphicon glyphicon-king"></span></h2>
+<div class="row">
+  <div class="col-lg-1">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let user of users">{{user?.id}}</div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let user of users">{{user?.name}}</div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let user of users">{{user?.totalPoints}}</div>
+    </div>
+  </div>
+  </div>
+
