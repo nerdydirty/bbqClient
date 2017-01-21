@@ -5,6 +5,6 @@
     <img class="img-circle" src="{{category.img}}" alt="Generisches Platzhalter-Bild" width="140" height="140">
     <h2>{{category.name}}</h2>
     <p>Diese Kategorie enthält aktuell {{category.countQuestions}} Fragen.</p>
-    <p><a class="btn btn-default" href="#" role="button">Jetzt diese Fragen spielen »</a></p>
+    <p><a class="btn btn-default" [routerLink] = "[category.id, 'play']" role="button">Jetzt diese Fragen spielen »</a></p>
   </div>
 </div>
