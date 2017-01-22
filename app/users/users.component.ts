@@ -23,8 +23,12 @@ export class UsersComponent{
     this.userService.getUsers().then(users => this.users = users);
   }
 
+  getUsersHighscored(): void {
+    this.userService.getUsersHighscored().then(users => this.users = users);
+  }
+
   ngOnInit(): void {
-    this.getUsers();
+    this.getUsersHighscored();
   }
 
 }

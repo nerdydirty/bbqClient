@@ -1,0 +1,23 @@
+<bbq-nav></bbq-nav>
+<div class="jumbotron">
+  <h2>Deine Auswertung</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Frage</th>
+        <th>Richtig</th>
+        <th>Punkte</th>
+        <th>Versuche</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let questionPlayed of questionsPlayed">
+        <td>{{questionPlayed.question.text}}</td>
+        <!-- Ternäre Operator = Kurz-Schreibweise für if Bed? true sonst: false -->
+        <td><img src="img/{{questionPlayed.answerWasRight? 'tick-inside-a-circle30.png': 'wrong-sign30.png'}}"></td>
+        <td>{{questionPlayed.points}}</td>
+        <td>{{questionPlayed.attempts}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>

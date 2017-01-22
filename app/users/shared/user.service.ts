@@ -30,8 +30,14 @@ export class UserService {
     return this.http.get(this.usersUrl).toPromise().then(response => response.json() as User[]).catch(this.handleError);
   }
 
+  getUsersHighscored(): Promise<User[]> {
+    return this.http.get(this.usersUrl+"/highscore").toPromise().then(response => response.json() as User[]).catch(this.handleError);
+  }
+
   createUser(user: User): Observable<User> {
     user.password = this.hashPassword(user.password);
+    user.totalPoints = 0;
+    user.attemptsTotal = 0;
     return this.http.post(this.usersUrl, user, {headers: this.headers})
       .map(( r: Response ) => r.json() as User);
   }
@@ -45,6 +51,12 @@ export class UserService {
     qp.points = question.points;
     return this.http.post(this.usersUrl+"/"+user.id+"/questionsPlayed", qp, {headers:this.headers})
       .map((r: Response) => r).catch(this.handleError);
+  }
+
+  getUserQuestionsPlayed(user: User): Observable<QuestionPlayed[]>{
+    return this.http.get(this.usersUrl + '/' + user.id + '/questionsPlayed')
+      .map((r: Response) => r.json() as QuestionPlayed[]).catch(this.handleError);
+
   }
 
   handleError(error: any): Promise<any> {

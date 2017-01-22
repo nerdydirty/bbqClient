@@ -1,21 +1,22 @@
 <bbq-nav></bbq-nav>
+<div class="jumbotron">
 <h2>Es gibt insgesamt aktuell {{questions?.length}} Fragen im BBQ</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Frage</th>
-      <th>Kategorie</th>
-      <th>Ersteller</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let question of questions">
-      <td>{{question.id}}</td>
-      <td>{{question.text}}</td>
-      <td>{{question.category.name}}</td>
-      <td>{{question.creator.name}}</td>
-    </tr>
-  </tbody>
-</table>
-
+    <table class="table table-hover">
+        <thead>
+          <tr *ngIf="questions">
+            <th>#</th>
+            <th>Frage</th>
+            <th>Kategorie</th>
+            <th>Ersteller</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let question of questions">
+            <td>{{question.id}}</td>
+            <td>{{question.text}}</td>
+            <td>{{question.category.name}}</td>
+            <td>{{question.creator.name}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

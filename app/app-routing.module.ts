@@ -8,15 +8,17 @@ import { QuestionsComponent} from './questions/questions.component';
 import { CategoriesComponent} from './categories/categories.component';
 import { RegisterUserComponent} from './users/register-user.component';
 import { AuthGuard } from "./guards/auth.guard";
-import {LoginUserComponent} from "./users/login-user.component";
-import {WelcomeComponent} from "./welcome/welcome.component";
-import {MyQuestionsComponent} from "./questions/my-questions.component";
-import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
+import { LoginUserComponent} from "./users/login-user.component";
+import { WelcomeComponent} from "./welcome/welcome.component";
+import { MyQuestionsComponent} from "./questions/my-questions.component";
+import { PlayQuizComponent} from "./play-quiz/play-quiz.component";
+import { MyScoreComponent} from "./users/my-score.component";
 
 
 //Routenplaner - Bsp: Wenn Pfad /users aufgerufen wird, dann includiere die UsersComponent (unter router-outlet im DOM)
 const routes: Routes = [
   {path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
+  {path: 'questionsPlayed', component: MyScoreComponent, canActivate:[AuthGuard]},
   {path: 'questions', component: QuestionsComponent, canActivate:[AuthGuard]},
   {path: 'myquestions', component: MyQuestionsComponent, canActivate:[AuthGuard]},
   {path: 'categories', component: CategoriesComponent, canActivate:[AuthGuard]},

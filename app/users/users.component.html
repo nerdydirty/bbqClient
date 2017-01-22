@@ -1,20 +1,50 @@
 <bbq-nav></bbq-nav>
+<div class="jumbotron text-center">
 <h2>Highscore <span class="glyphicon glyphicon-king"></span></h2>
-<div class="row">
-  <div class="col-lg-1">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let user of users">{{user?.id}}</div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="list-group"></div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group">
+        <div class="list-group-item text-center"><strong>Platz</strong></div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="list-group">
+        <div class="list-group-item text-center"><strong>Spieler</strong></div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group">
+        <div class="list-group-item text-center"><strong>Gesamtpunkte</strong></div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group"></div>
     </div>
   </div>
-  <div class="col-lg-3">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let user of users">{{user?.name}}</div>
+  <div class="row" *ngFor="let user of users; let i = index">
+    <div class="col-lg-2">
+      <div class="list-group"></div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group">
+        <div class="list-group-item text-center">{{i+1}}</div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="list-group">
+        <div class="list-group-item text-center">{{user?.name}}</div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group">
+        <div class="list-group-item text-center">{{user?.totalPoints}}</div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="list-group"></div>
     </div>
   </div>
-  <div class="col-lg-8">
-    <div class="list-group">
-      <div class="list-group-item" *ngFor="let user of users">{{user?.totalPoints}}</div>
-    </div>
-  </div>
-  </div>
-
+</div>

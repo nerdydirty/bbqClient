@@ -25,6 +25,8 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import {MyQuestionsComponent} from "./questions/my-questions.component";
 import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
+import {QuestionPlayed} from "./users/shared/question-played.model";
+import {MyScoreComponent} from "./users/my-score.component";
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, AppRoutingModule, FormsModule ],
@@ -39,7 +41,8 @@ import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
     LoginUserComponent,
     WelcomeComponent,
     MyQuestionsComponent,
-    PlayQuizComponent
+    PlayQuizComponent,
+    MyScoreComponent
   ],
   providers: [ CategoryService, QuestionService, UserService, AlertService, AuthenticationService, AuthGuard ],
   bootstrap:    [ AppComponent ]

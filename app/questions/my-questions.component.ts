@@ -9,7 +9,7 @@ import {CategoryService} from "../categories/shared/category.service";
 import {Answer} from "./shared/answer.model";
 import {Router} from "@angular/router";
 import {AlertService} from "../alerts/shared/alert.service";
-import set = Reflect.set;
+
 
 @Component({
     moduleId: module.id,

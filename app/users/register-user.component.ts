@@ -31,11 +31,11 @@ export class RegisterUserComponent{
       .subscribe(
         data => {
           // set success message and pass true paramater to persist the message after redirecting to the login page
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/categories']);
+          this.alertService.success('Registrierung war erfolgreich', true);
+          this.router.navigate(['/login']);
         },
         error => {
-          this.alertService.error('Registration failed');
+          this.alertService.error('Registrierung ist fehlgeschlagen');
           this.loading = false;
         });
   }
