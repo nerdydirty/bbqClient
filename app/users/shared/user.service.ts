@@ -10,6 +10,8 @@ import 'rxjs/add/operator/toPromise';
 
 import {User} from './user.model';
 import {Observable} from "rxjs";
+import {Question} from "../../questions/shared/question.model";
+import {QuestionPlayed} from "./question-played.model";
 
 declare var jsSha: any;
 
@@ -32,6 +34,17 @@ export class UserService {
     user.password = this.hashPassword(user.password);
     return this.http.post(this.usersUrl, user, {headers: this.headers})
       .map(( r: Response ) => r.json() as User);
+  }
+
+  postUserQuestion(user: User, question: Question, answerWasRight: boolean): Observable<Response>{
+    let qp = new QuestionPlayed();
+    qp.answerWasRight = answerWasRight;
+    qp.question = question;
+    qp.user = user;
+    qp.attempts =1;
+    qp.points = question.points;
+    return this.http.post(this.usersUrl+"/"+user.id+"/questionsPlayed", qp, {headers:this.headers})
+      .map((r: Response) => r).catch(this.handleError);
   }
 
   handleError(error: any): Promise<any> {
