@@ -48,3 +48,4 @@ export class QuestionService{
     return Promise.reject(error.message || error);
   }
 }
+//Todo: Cache eingabauen, damit die Fragen nicht immer neu vom Server geladen werden
