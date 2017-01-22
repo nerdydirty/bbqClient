@@ -2,7 +2,7 @@
 <h1>Du spielst diese Kategorie <strong>{{category?.name}}</strong><img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /></h1>
 <div class="row" *ngFor="let question of categoryQuestions">
   <div class="col-md-3">
-    <img src="img/wrong-sign.png" style="width: 140px;">
+    <img id="answerIs-{{question.id}}" src="img/question.png" style="width: 140px;">
   </div>
   <div class="col-md-8">
     <div class="panel panel-default">
@@ -10,15 +10,15 @@
           <p>{{question.text}} <span class="glyphicon glyphicon-question-sign"></span></p>
         </div>
       <div class="panel-body">
-        <div class="checkbox" *ngFor="let answer of question.answers" (click)="onAnswerClick(answer)">
-          <label for="answer">
-            <input id="answer" type="checkbox">{{answer.text}}
+        <div class="radio" *ngFor="let answer of question.answers" (change)="onAnswerClick(question, answer)">
+          <label for="answer-{{answer.id}}">
+            <input name="answer-option-{{question.id}}" id="answer-{{answer.id}}" type="radio">{{answer.text}}
           </label>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-1" style="border: 1px solid red;">
+  <div class="col-md-1">
 
   </div>
 </div>
