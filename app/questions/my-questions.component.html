@@ -43,25 +43,6 @@
       </div><!-- /.row -->
       <p></p>
 
-      <!--            -  Bild einfügen   -       -->
-
-      <h4 for="qimg">Bild einfügen</h4>
-      <div class = "form-group-sm" [ngClass]="{ 'has-error': f.submitted && !qimg.valid }">
-        <input name="qimg" [(ngModel)]="model.img" #qimg="ngModel" class="form-control" id="qimg" type="text"
-             placeholder="URL zum Bild eingeben" required>
-      </div>
-
-
-      <!--            -  Beschreibung einfügen   -       -->
-
-      <h4>Beschreibung hinzufügen:</h4>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !qexpl.valid }">
-        <textarea class="form-control" name="qexpl" [(ngModel)]="model.explanation" #qexpl="ngModel"
-          placeholder="Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-                  rows="4" required></textarea>
-      </div>
-      <p></p>
-
       <!--                 -  Punkte   -              -->
 
       <h4>Punkte:</h4>
