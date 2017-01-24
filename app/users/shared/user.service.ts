@@ -74,6 +74,7 @@ export class UserService {
   private jwt(){
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
+      // es kann sein, dass nach Bearer  ein Leerzeichen kommen muss. TESTEN
       let headers = new Headers({ 'Authentization': 'Bearer' + currentUser.token});
       return new RequestOptions ({headers: headers});
     }
