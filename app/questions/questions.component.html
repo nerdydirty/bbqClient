@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let question of questions">
+          <tr *ngFor="let question of questions" [routerLink] = "['/myquestions',{question: question.id}]">
             <td>{{question.id}}</td>
             <td>{{question.text}}</td>
             <td>{{question.category.name}}</td>

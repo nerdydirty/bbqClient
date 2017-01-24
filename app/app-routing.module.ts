@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: 'questionsPlayed', component: MyScoreComponent, canActivate:[AuthGuard]},
   {path: 'questions', component: QuestionsComponent, canActivate:[AuthGuard]},
   {path: 'myquestions', component: MyQuestionsComponent, canActivate:[AuthGuard]},
+  {path: 'myquestions/:id', component: MyQuestionsComponent, canActivate:[AuthGuard]},
   {path: 'categories', component: CategoriesComponent, canActivate:[AuthGuard]},
   {path: 'categories/:id/play', component: PlayQuizComponent, canActivate:[AuthGuard]},
   {path: 'register', component: RegisterUserComponent},

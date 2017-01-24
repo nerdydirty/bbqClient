@@ -24,6 +24,18 @@ export class QuestionService{
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
   }
 
+  getQuestionById(id: number): Promise<Question>{
+    return this.http.get(this.questionsUrl+"/"+id).toPromise().then(response => response.json() as Question).catch(this.handleError);
+  }
+
+  /*postQuestionById(id: number): Observable<Question>{
+    return this.http.post(this.questionUrl+"/"id, id, {headers:this.headers})
+    .map((r: Response)=> r.json())
+      .flatMap((id)) => {
+      ...
+    }
+  }*/
+
   //alte createQuestion Implementierung
   private postQuestion(q: Question): Observable<Question>{
     return this.http.post(this.questionsUrl, q, {headers:this.headers})

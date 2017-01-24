@@ -7,7 +7,7 @@ import {QuestionService} from "./shared/question.service";
 import {Category} from "../categories/shared/category.model";
 import {CategoryService} from "../categories/shared/category.service";
 import {Answer} from "./shared/answer.model";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute, Params} from "@angular/router";
 import {AlertService} from "../alerts/shared/alert.service";
 
 
@@ -18,7 +18,7 @@ import {AlertService} from "../alerts/shared/alert.service";
 })
 export class MyQuestionsComponent implements OnInit {
   model: Question = new Question();
-  answers: Answer[] = [new Answer(), new Answer(), new Answer(), new Answer()];
+  answers: Answer[];
   categories: Category[];
 
 
@@ -26,12 +26,32 @@ export class MyQuestionsComponent implements OnInit {
     private questionService: QuestionService,
     private categoryService: CategoryService,
     private alertService: AlertService,
-    private router: Router){}
+    private router: Router,
+    private route: ActivatedRoute){}
 
   ngOnInit() {
       this.model.creator = JSON.parse(localStorage.getItem('currentUser'));
-      this.categoryService.getCategories().then(categories => {this.categories = categories;
-      this.model.category = this.categories[0]});
+      this.categoryService.getCategories().then(categories => {
+        this.categories = categories;
+        this.model.category = this.categories[0]
+      });
+      this.answers = [new Answer(), new Answer(), new Answer(), new Answer()];
+      this.route.params
+
+        .map((params) => params['question'])
+        .subscribe((id) => {
+
+          if (id) {
+            this.questionService.getQuestionById(id).then((question) => {
+              console.log(question);
+              this.model = question;
+              this.answers = [...question.answers];
+
+            });
+          }
+
+        });
+
   }
 
   onSubmit(){

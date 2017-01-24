@@ -1,9 +1,11 @@
 <bbq-nav></bbq-nav>
-
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#"><h3>Neue Quiz-Frage erstellen</h3></a></li>
+  <li role="presentation"><a [routerLink] = "['/questions']"><h3>Meine Fragen editieren</h3></a></li>
+</ul>
 <!--            -  Formular   -       -->
 
 <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm"  class="createQuestion" novalidate>
-  <h1>Meine Quiz-Fragenverwaltung</h1>
     <div class="panel panel-transparent">
       <div class="panel-heading">
         <div class="form-group">
@@ -14,7 +16,7 @@
           <div class="well center-block">
           <h4>Kategorie wählen:</h4>
           <select id="cat" name="category" class="form-control" [(ngModel)]="model.category" #category="ngModel">
-            <option *ngFor="let category of categories" [ngValue]="category">
+            <option *ngFor="let category of categories" [ngValue]="category" [selected]="category.id == model.category.id">
               {{category.name}}
             </option>
           </select>
@@ -41,10 +43,9 @@
                   <span class="input-group-addon">
                       <input type="radio" name="correct-answer" (click)="setAsRightAnswer(i)">
                   </span>
-                  <input name="a" type="text" class="form-control" [(ngModel)]="answer.text">
+                  <input name="{{'name' + i}}" type="text" class="form-control" [(ngModel)]="model.answers[i].text">
                 </div><!-- /input-group -->
               </div><!-- /.col-lg-6 -->
-
         </div><!-- /form-group -->
         <p></p>
 
