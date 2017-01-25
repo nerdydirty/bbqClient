@@ -1,0 +1,25 @@
+<bbq-nav></bbq-nav>
+<div class="jumbotron">
+  <h2>Du hast insgesamt {{myQuestions?.length}} Fragen im BBQ angelegt</h2>
+  <h3>Wenn du möchtest, kannst du diese auch noch verändern!</h3>
+  <table class="table table-hover">
+    <thead>
+    <tr *ngIf="myQuestions">
+      <th>#</th>
+      <th>Frage</th>
+      <th>Kategorie</th>
+      <th>Ersteller</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let question of myQuestions" [routerLink]="['/myquestions', question.id]">
+      <td>{{question.id}}</td>
+      <td>{{question.text}}</td>
+      <td>{{question.category.name}}</td>
+      <td>{{question.creator.name}}</td>
+      <td><a [routerLink]="['/myquestions', question.id]">Edit</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

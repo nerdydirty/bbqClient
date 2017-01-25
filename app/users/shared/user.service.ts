@@ -59,6 +59,12 @@ export class UserService {
 
   }
 
+  getQuestionsCreated(user: User): Observable<Question[]>{
+    return this.http.get(this.usersUrl + '/' + user.id + '/questionsCreated')
+      .map((r: Response) => r.json() as Question[]).catch(this.handleError);
+
+  }
+
   handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }

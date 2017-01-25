@@ -9,6 +9,7 @@ import 'rxjs/add/operator/mergeMap';
 import { Question } from './question.model';
 import {Observable} from "rxjs";
 import {Answer} from "./answer.model";
+import {ObservableInput} from "rxjs/Observable";
 
 @Injectable()
 export class QuestionService{
@@ -22,6 +23,16 @@ export class QuestionService{
 
   getQuestions(): Promise<Question[]> {
     return this.http.get(this.questionsUrl).toPromise().then(response => response.json() as Question[]).catch(this.handleError);
+  }
+
+  getQuestionById(id: number): Observable<Question>{
+    return this.http.get(this.questionsUrl+"/"+id)
+      .map((r: Response)=> r.json() as Question).catch(this.handleError);
+  }
+
+  updateQuestion(question: Question): Observable<Question>{
+    return this.http.put(this.questionsUrl+"/"+question.id, question, {headers:this.headers})
+      .map((r: Response)=> r.json() as Question).catch(this.handleError);
   }
 
   //alte createQuestion Implementierung
