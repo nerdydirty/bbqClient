@@ -1,78 +1,44 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# BBQ Client WebApp
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
 
-It's been extended with testing support so you can start writing tests immediately.
+This repository holds the TypeScript source code of my Web application BBQ. BBQ is a Quiz App. The name "BBQ" is 
+inspired by the name of the developers: Bea & Becky plus "Q" for Quiz. These are the nicknames of Beate Ullmann (Bea) and 
+Rebecca Bettinger (Becky).
 
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
+In the Quiz a user has following opportunities:
+- Login, Logout, Register
+- Play Quiz questions (its own + from others) in different categories
+- Manage Quiz questions, like create and update own questions and mark answers as right/wrong, as well as switch 
+questions into another category
+- Creator of a Quiz question is displayed
+- Basic user statistics of the played questions and a highscore of all users
 
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+Images for categories are binaries in the database, which are retrieved in the WebApp by requesting the 
+server component.
+
+**Have fun with BBQ!**
 
 ## Prerequisites
-we need jssha lib for password hashing
-```shell
-npm install jssha
-npm install --save @types/jssha
-```
+You need Node.js to use npm
 
-## Create a new project based on the QuickStart
+You should have a running instance of the [bbq server](https://github.com/beckybettinger/bbq) 
+on http://localhost:8081
+
+## How to install the BBQ client
 
 Clone this repo into new project folder (e.g., `my-proj`).
 ```shell
-git clone https://github.com/angular/quickstart  my-proj
+git clone https://github.com/nerdydirty/bbqClient.git  my-proj
 cd my-proj
+npm install
 ```
-
-We have no intention of updating the source on `angular/quickstart`.
-Discard the `.git` folder..
+We need to add the jssha library for password hashing.
 ```shell
-rm -rf .git  # OS/X (bash)
-rd .git /S/Q # windows
-```
-### Delete _non-essential_ files (optional)
+npm install jssha
+npm install --save @types/jssha
 
-You can quickly delete the _non-essential_ files that concern testing and QuickStart repository maintenance
-(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`!)
-by entering the following commands while in the project folder:
-
-##### OS/X (bash)
-```shell
-xargs -a non-essential-files.txt rm -rf
-rm app/*.spec*.ts
-rm non-essential-files.txt
-```
-
-##### Windows
-```shell
-for /f %i in (non-essential-files.txt) do del %i /F /S /Q
-rd .git /s /q
-rd e2e /s /q
-```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```shell
-git init
-git add .
-git commit -m "Initial commit"
-```
-
->Recover the deleted `.gitignore` from the QuickStart repository 
-if you lost it in the _Delete non-essential files_ step.
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```shell
-git remote add origin <repo-address>
-git push -u origin master
+//starts the application locally
+npm start
 ```
 ## Install npm packages
 
@@ -111,53 +77,3 @@ Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
 * `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
 
-## Testing
-
-The QuickStart documentation doesn't discuss testing.
-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
-
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
-### Unit Tests
-TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
-
-Look for the example `app/app.component.spec.ts`.
-Add more `.spec.ts` files as you wish; we configured karma to find them.
-
-Run it with `npm test`
-
-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
-Both the compiler and the karma watch for (different) file changes.
-
-Shut it down manually with `Ctrl-C`.
-
-Test-runner output appears in the terminal window.
-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
-restart it. No worries; it's pretty quick.
-
-### End-to-end (E2E) Tests
-
-E2E tests are in the `e2e` directory, side by side with the `app` folder.
-Their filenames must end in `.e2e-spec.ts`.
-
-Look for the example `e2e/app.e2e-spec.ts`.
-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
-we configured protractor to find them.
-
-Thereafter, run them with `npm run e2e`.
-
-That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
-and launches protractor.  
-
-The pass/fail test results appear at the bottom of the terminal window.
-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
-which is easier to read; this file is excluded from source control.
-
-Shut it down manually with `Ctrl-C`.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
