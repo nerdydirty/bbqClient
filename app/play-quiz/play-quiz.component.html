@@ -3,6 +3,7 @@
 <div class="row" *ngFor="let question of categoryQuestions">
   <div class="col-md-2">
     <img id="answerIs-{{question.id}}" src="img/question.png" style="width: 140px;">
+    <p style="color: #358425; font-size: larger" id="correct-answer-{{question.id}}"></p>
   </div>
   <div class="col-md-8">
     <div class="panel panel-default">

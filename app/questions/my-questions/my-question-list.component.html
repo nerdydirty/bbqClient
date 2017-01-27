@@ -1,7 +1,7 @@
 <bbq-nav></bbq-nav>
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="myQuestions?.length > 0">
   <h2>Du hast insgesamt {{myQuestions?.length}} Fragen im BBQ angelegt</h2>
-  <h3>Wenn du möchtest, kannst du diese auch noch verändern!</h3>
+  <h3>Wenn du Fragen angelegt hast, kannst du diese auch noch verändern!</h3>
   <table class="table table-hover">
     <thead>
     <tr *ngIf="myQuestions">
@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let question of myQuestions" [routerLink]="['/myquestions', question.id]">
+    <tr *ngFor="let question of myQuestions" [routerLink]="['/myquestions?', question.id]">
       <td>{{question.id}}</td>
       <td>{{question.text}}</td>
       <td>{{question.category.name}}</td>
@@ -23,3 +23,6 @@
     </tbody>
   </table>
 </div>
+<div *ngIf="myQuestions?.length == 0" class="jumbotron text-center"><img src="img/Sloth_Cartoon.png">
+<p>Oh...schade, du hast noch gar keine Frage angelegt!</p></div>
+

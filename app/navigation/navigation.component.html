@@ -1,11 +1,11 @@
 <h1><img src="/img/bbqlogo80.png"> Client of {{name}}</h1>
 <nav class="nav nav-pills">
-    <li><a routerLink="/">Welcome</a></li>
-    <li><a routerLink="/categories">Kategorien</a></li>
-    <li><a routerLink="/questions">Alle Fragen</a></li>
-    <li><a routerLink="/users">Highscore</a></li>
-    <li><a routerLink="/questionsPlayed">my Score</a></li>
-    <li><a routerLink="/myquestions">Meine Fragen</a></li>
-    <li><a routerLink="/createquestion">Neue Frage</a></li>
-    <li><a routerLink="/login">Logout</a></li>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Welcome</a></li>
+    <li routerLinkActive="active"><a routerLink="/categories" >Kategorien</a></li>
+    <li routerLinkActive="active"><a routerLink="/questions">Alle Fragen</a></li>
+    <li routerLinkActive="active"><a routerLink="/users">Highscore</a></li>
+    <li routerLinkActive="active"><a routerLink="/questionsPlayed">my Score</a></li>
+    <li routerLinkActive="active"><a routerLink="/myquestions">Meine Fragen</a></li>
+    <li routerLinkActive="active"><a routerLink="/createquestion">Neue Frage</a></li>
+    <li routerLinkActive="active"><a routerLink="/login">Logout</a></li>
 </nav>

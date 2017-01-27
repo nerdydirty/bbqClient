@@ -20,6 +20,7 @@ export class PlayQuizComponent implements OnInit {
     category: Category;
     categoryid: number;
     loading = false;
+    correctAnswer: string;
 
     constructor(
       private route: ActivatedRoute,
@@ -35,16 +36,13 @@ export class PlayQuizComponent implements OnInit {
       //this.route.params.map(params => params['id']).subscribe(id => this.categoryid = id);
       console.log(this.route.params);
       this.route.params.map(params => params['id']).subscribe(id => {
-        console.log("ID:", id);
         this.categoryid = id;
         this.categoryService.getCategoryById(this.categoryid)
           .subscribe(
             data => {
               this.category = data;
-              console.log ("Kategorie: ", this.category);
               this.categoryService.getQuestionsByCategory(this.category)
                 .subscribe(questions => {
-                  console.log("Fragen1: ", questions);
                   this.categoryQuestions = questions;
                   this.loading=false;
                 });
@@ -53,12 +51,11 @@ export class PlayQuizComponent implements OnInit {
               console.log ("Fehler: ",  error);
             });
       });
-
-      console.log("3");
     }
 
     onAnswerClick(question: Question, answer: Answer) {
       let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      let correctAnswer = this.findCorrectAnswer(question);
       let img = this.renderer.selectRootElement('#answerIs-'+question.id);
       let elements = document.getElementsByName("answer-option-"+question.id);
       for (let i=0; i< elements.length; i++){
@@ -73,6 +70,13 @@ export class PlayQuizComponent implements OnInit {
             }else{
               console.log("antwort is nigt rigtig");
               this.renderer.setElementAttribute(img, "src", "img/wrong-sign.png");
+              document.getElementById("correct-answer-"+question.id)
+                .innerHTML = "Richtig wäre: " +correctAnswer.text;
+              for (let i=0; i< elements.length; i++){
+                if("answer-"+correctAnswer.id == elements.item(i).id){
+                  elements.item(i).parentElement.classList.add("label-success");
+                }
+              }
             }
           },
           error => {
@@ -80,5 +84,13 @@ export class PlayQuizComponent implements OnInit {
           }
         );
     }
+
+    private findCorrectAnswer(question: Question): Answer {
+      for (let answer of question.answers){
+        if (answer.isTrue) {
+          return answer;
+        }
+      }
+}
 
 }

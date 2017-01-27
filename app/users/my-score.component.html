@@ -1,7 +1,7 @@
 <bbq-nav></bbq-nav>
-<div class="jumbotron">
+<div class="jumbotron" >
   <h2>Deine Auswertung</h2>
-    <table class="table table-hover">
+    <table class="table table-hover" *ngIf="questionsPlayed?.length > 0">
       <thead>
       <tr>
         <th>Frage</th>
@@ -20,4 +20,9 @@
       </tr>
       </tbody>
     </table>
+  <div class="text-center">
+  <img src="img/Sloth_Cartoon.png" *ngIf="questionsPlayed?.length == 0">
+    <p>...ist erst möglich, wenn du eine Frage gespielt hast!</p>
+  </div>
 </div>
+
