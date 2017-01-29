@@ -8,7 +8,7 @@
   <div class="col-md-8">
     <div class="panel panel-default">
         <div class="jumbotron">
-          <p>{{question.text}} <span class="glyphicon glyphicon-question-sign"></span></p>
+          <p>{{question.text}}</p>
         </div>
       <div class="panel-body">
         <div class="radio" *ngFor="let answer of question.answers" (change)="onAnswerClick(question, answer)">
@@ -22,5 +22,18 @@
   <div class="col-md-1">
   </div>
 </div>
-
+<div class="col-md-2">
+</div>
+<div class="col-md-4">
+  <button routerLink="/categories" class="btn btn-success btn-lg btn-block" type="button">
+    <span class="glyphicon glyphicon-chevron-left"></span>Zurück
+    </button>
+</div>
+<div class="col-md-4">
+  <button routerLink="/questionsPlayed" class="btn btn-primary btn-lg btn-block" type="button">my Score
+    <span class="glyphicon glyphicon-king"></span>
+  </button>
+</div>
+<div class="col-md-2">
+</div>
 <!-- <pre>{{category | json}}</pre> -->
